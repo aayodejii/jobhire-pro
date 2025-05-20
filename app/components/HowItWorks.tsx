@@ -50,7 +50,7 @@ const HowItWorks = () => {
                 className="bg-white p-6 rounded-lg shadow-md text-center feature-card transition duration-300"
               >
                 <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-primary text-white mb-4">
-                  <span className="text-xl font-bold">{step.id}2</span>
+                  <span className="text-xl font-bold">{step.id}</span>
                 </div>
                 <h3 className="text-lg font-medium text-gray-900 mb-2">
                   {step.title}
