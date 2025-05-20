@@ -1,11 +1,6 @@
 // src/components/FAQ.tsx
 import { FAQItem } from "../types";
-import {
-  FaChevronDown,
-  FaChevronUp,
-  FaEnvelope,
-  FaArrowRight,
-} from "react-icons/fa";
+import { FaChevronDown, FaChevronUp, FaEnvelope } from "react-icons/fa";
 
 interface FAQProps {
   activeFaq: number | null;
