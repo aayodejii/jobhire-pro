@@ -1,5 +1,4 @@
-@import "tailwindcss";
-
+/* 
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -23,4 +22,63 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+/* src/index.css */
+
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+@import "tailwindcss";
+
+
+
+@theme {
+  --color-primary: #2563eb;
+  --color-secondary: #1e40af;
+  --color-accent: #3b82f3;
+ 
 }
+
+/* @theme: {
+  extend: {
+    colors: {
+      primary: '#2563eb';
+      secondary: '#1e40af';
+      accent: '#3b82f'
+    }
+  }
+} */
+
+.hero-gradient {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.pricing-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+

@@ -1,0 +1,37 @@
+// src/components/CTA.tsx
+import { FaPhoneAlt } from "react-icons/fa";
+
+const CTA = () => {
+  return (
+    <section className="py-16 hero-gradient text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 className="text-3xl md:text-4xl font-extrabold mb-6">
+          Stop Struggling Alone—
+          <span className="underline decoration-accent">
+            Let's Get You Hired!
+          </span>
+        </h2>
+        <p className="text-xl max-w-3xl mx-auto mb-8">
+          Join thousands of professionals who've transformed their job search
+          with our proven system.
+        </p>
+        <div className="flex flex-col sm:flex-row justify-center gap-4">
+          <a
+            href="#pricing"
+            className="px-8 py-4 border border-transparent text-base font-medium rounded-md shadow-sm text-primary bg-white hover:bg-gray-100 md:py-4 md:text-lg md:px-10"
+          >
+            Start My Job Search Now
+          </a>
+          <a
+            href="#"
+            className="px-8 py-4 border border-white text-base font-medium rounded-md shadow-sm text-white bg-transparent hover:bg-white hover:bg-opacity-10 md:py-4 md:text-lg md:px-10"
+          >
+            <FaPhoneAlt className="mr-2 inline" /> Book a Free Consultation
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default CTA;
