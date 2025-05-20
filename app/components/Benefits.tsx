@@ -58,12 +58,12 @@ const Benefits = () => {
   ];
 
   const iconComponents: Record<string, JSX.Element> = {
-    FaClock: <FaClock className="text-primary text-xl" />,
-    FaChartLine: <FaChartLine className="text-primary text-xl" />,
-    FaCommentDots: <FaCommentDots className="text-primary text-xl" />,
-    FaBell: <FaBell className="text-primary text-xl" />,
-    FaLock: <FaLock className="text-primary text-xl" />,
-    FaHandHoldingUsd: <FaHandHoldingUsd className="text-primary text-xl" />,
+    FaClock: <FaClock className="text-white text-xl" />,
+    FaChartLine: <FaChartLine className="text-white text-xl" />,
+    FaCommentDots: <FaCommentDots className="text-white text-xl" />,
+    FaBell: <FaBell className="text-white text-xl" />,
+    FaLock: <FaLock className="text-white text-xl" />,
+    FaHandHoldingUsd: <FaHandHoldingUsd className="text-white text-xl" />,
   };
 
   return (
