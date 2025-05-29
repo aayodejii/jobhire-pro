@@ -9,9 +9,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <div className="flex-shrink-0 flex items-center">
               <FaBriefcase className="text-primary text-2xl mr-2" />
-              <span className="text-xl font-bold text-primary">
-                JobHire Pro
-              </span>
+              <span className="text-xl font-bold text-primary">NextRole </span>
             </div>
           </div>
           <div className="hidden md:ml-6 md:flex md:items-center md:space-x-8">

@@ -13,7 +13,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-lg font-medium mb-4">JobHire Pro</h3>
+            <h3 className="text-lg font-medium mb-4">NextRole</h3>
             <p className="text-gray-400">
               We help job seekers land their dream roles with less stress and
               better results.
@@ -102,7 +102,7 @@ const Footer = () => {
         </div>
         <div className="mt-12 pt-8 border-t border-gray-800">
           <p className="text-gray-400 text-center">
-            &copy; {new Date().getFullYear()} JobHire Pro. All rights reserved.
+            &copy; {new Date().getFullYear()} NextRole. All rights reserved.
           </p>
         </div>
       </div>

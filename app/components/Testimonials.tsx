@@ -9,7 +9,7 @@ const Testimonials = () => {
       name: "Sarah J.",
       role: "Marketing Director",
       content:
-        "After 6 months of applying with no responses, JobHire Pro got me 5 interviews in the first month. I accepted an offer with a 30% salary increase!",
+        "After 6 months of applying with no responses, NextRole got me 5 interviews in the first month. I accepted an offer with a 30% salary increase!",
       rating: 5,
       image: "https://randomuser.me/api/portraits/women/32.jpg",
     },
@@ -27,7 +27,7 @@ const Testimonials = () => {
       name: "Priya K.",
       role: "Financial Analyst",
       content:
-        "As a recent graduate, I was overwhelmed by the job search. JobHire Pro not only applied for me but taught me how to interview better. Landed my first job in 3 weeks!",
+        "As a recent graduate, I was overwhelmed by the job search. NextRole not only applied for me but taught me how to interview better. Landed my first job in 3 weeks!",
       rating: 5,
       image: "https://randomuser.me/api/portraits/women/68.jpg",
     },

@@ -35,7 +35,7 @@ const HowItWorks = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            How <span className="text-primary">JobHire Pro</span> Works
+            How <span className="text-primary">NextRole</span> Works
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-600">
             Our proven 4-step process gets you more interviews with less effort

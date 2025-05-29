@@ -71,7 +71,7 @@ const Benefits = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            Why <span className="text-primary">Thousands</span> of Job Seekers
+            Why <span className="text-primary">Job Seekers </span>
             Choose Us
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-600">
@@ -103,8 +103,8 @@ const Benefits = () => {
                 Ready to Transform Your Job Search?
               </h3>
               <p className="text-primary-100">
-                Join thousands of professionals who've landed their dream jobs
-                with our help.
+                Our team of hiring professionals is ready to handle your job
+                search with the attention and expertise it deserves.
               </p>
             </div>
             <div className="mt-4 md:mt-0">

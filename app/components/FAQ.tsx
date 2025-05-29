@@ -11,33 +11,41 @@ const FAQ = ({ activeFaq, toggleFaq }: FAQProps) => {
   const faqs: FAQItem[] = [
     {
       id: 1,
-      question: "How do you match me with the right jobs?",
-      answer:
-        "Our proprietary matching algorithm analyzes your skills, experience, and preferences against thousands of job postings. Before we apply, you'll review and approve all selected opportunities to ensure they align with your career goals.",
-    },
-    {
-      id: 2,
       question: "Can I provide input on which jobs to apply for?",
       answer:
-        "Absolutely! You can specify companies you're interested in, set salary requirements, and even blacklist certain organizations. Our dashboard allows you to review and approve every application before submission.",
+        "Absolutely! You can specify companies you're interested in, set salary requirements, \
+        and even blacklist certain organizations.",
+    },
+
+    {
+      id: 2,
+      question: "Who will be handling my job applications?",
+      answer:
+        "Experienced hiring professionals with backgrounds in recruitments. Each client is assigned a dedicated career advisor who oversees their account.",
     },
     {
       id: 3,
-      question: "What if I don't get any interviews?",
+      question: "What makes your service different from using AI tools?",
       answer:
-        "While our success rate is over 85%, if you don't receive at least 3 interview invitations in your first month, we'll work with you to refine your approach at no extra cost. Our 14-day money-back guarantee ensures you can try risk-free.",
+        "Our service relies entirely on human expertise. Our professionals understand nuances in job descriptions, company cultures, and hiring practices that AI cannot comprehend, resulting in higher-quality, personalized applications.",
     },
     {
       id: 4,
+      question: "How do you measure success?",
+      answer:
+        "We track interview invitation rates, response rates from employers, and ultimately job offers secured. Your dedicated advisor will provide regular performance reports.",
+    },
+    {
+      id: 5,
       question: "How does the resume optimization work?",
       answer:
         "Our certified resume writers analyze your existing resume and enhance it by incorporating industry-specific keywords, quantifying achievements, and formatting it to pass Applicant Tracking Systems (ATS). Each application gets a customized version tailored to the specific job.",
     },
     {
-      id: 5,
-      question: "Can I cancel anytime?",
+      id: 6,
+      question: "Can I cancel my subscription",
       answer:
-        "Yes! You can cancel your subscription at any time with no hidden fees or penalties. We'll complete any pending applications you've approved, and you'll maintain access to all your materials and dashboard until the end of your billing period.",
+        "Yes! You can cancel your subscription at any time with no hidden fees or penalties. We don't use long-term contracts because we're confident in our ability to deliver results.",
     },
   ];
 
@@ -49,7 +57,7 @@ const FAQ = ({ activeFaq, toggleFaq }: FAQProps) => {
             Frequently <span className="text-primary">Asked</span> Questions
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-600">
-            Everything you need to know about JobHire Pro
+            Everything you need to know about NextRole
           </p>
         </div>
 

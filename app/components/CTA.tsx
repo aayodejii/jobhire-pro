@@ -12,8 +12,9 @@ const CTA = () => {
           </span>
         </h2>
         <p className="text-xl max-w-3xl mx-auto mb-8">
-          Join thousands of professionals who've transformed their job search
-          with our proven system.
+          Schedule your free 30-minute career strategy consultation to discuss
+          how we can help you secure better opportunities aligned with your
+          career goals.
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4">
           <a

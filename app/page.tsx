@@ -10,6 +10,9 @@ import Pricing from "./components/Pricing";
 import TrustBadges from "./components/TrustBadges";
 import Testimonials from "./components/Testimonials";
 import { useState } from "react";
+import WhyChooseUs from "./components/WhyUs";
+import Services from "./components/Services";
+import JobBoardCoverage from "./components/JobBoardCoverage";
 
 export default function Home() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -22,9 +25,12 @@ export default function Home() {
     <div className="font-sans text-dark bg-light">
       <Navbar />
       <HeroSection />
-      <TrustBadges />
+      <WhyChooseUs />
+      {/* <TrustBadges /> */}
+      <Services />
       <HowItWorks />
       <Benefits />
+      <JobBoardCoverage />
       <Testimonials />
       <Pricing />
       <FAQ activeFaq={activeFaq} toggleFaq={toggleFaq} />

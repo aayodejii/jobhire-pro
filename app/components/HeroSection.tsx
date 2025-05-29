@@ -1,27 +1,36 @@
+"use client";
+
 // src/components/HeroSection.tsx
+
+import { useState } from "react";
 import { FaPlay, FaPlayCircle } from "react-icons/fa";
+import ContactFormPopup from "./ContactFormPopup";
 
 const HeroSection = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
   return (
     <section className="hero-gradient text-white">
       <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
         <div className="text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-            Get Hired Faster—
-            <span className="underline decoration-accent">Let Us Apply</span> to
-            Jobs for You
+            Professional Job Application Management by
+            <span className="underline decoration-accent">
+              {" "}
+              Real Human Experts
+            </span>
           </h1>
           <p className="max-w-2xl mx-auto text-xl md:text-2xl mb-8">
             Stop wasting hours applying. We handle the job search while you
             focus on preparing for interviews.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a
-              href="#pricing"
-              className="px-8 py-4 border border-transparent text-base font-medium rounded-md shadow-sm text-primary bg-white hover:bg-gray-100 md:py-4 md:text-lg md:px-10 animate-pulse-slow"
-            >
-              Start My Job Search Now
-            </a>
+          <div
+            onClick={() => setIsFormOpen(true)}
+            className="flex flex-col sm:flex-row justify-center gap-4"
+          >
+            <span className="px-8 py-4 border border-transparent text-base font-medium rounded-md shadow-sm text-primary bg-white hover:bg-gray-100 md:py-4 md:text-lg md:px-10 animate-pulse-slow">
+              Book Your Consultation Call
+            </span>
             <a
               href="#how-it-works"
               className="px-8 py-4 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary bg-opacity-20 hover:bg-opacity-30 md:py-4 md:text-lg md:px-10"
@@ -45,6 +54,7 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
+      {isFormOpen && <ContactFormPopup onClose={() => setIsFormOpen(false)} />}
     </section>
   );
 };
