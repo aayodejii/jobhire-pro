@@ -28,7 +28,7 @@ const ContactFormPopup = ({ onClose }: { onClose: () => void }) => {
       .oneOf(["now", "remind-later"])
       .required("Please select an option"),
     reminderTime: Yup.string().when("commitment", (commitment, schema) => {
-      return commitment === "remind-later"
+      return commitment[0] === "remind-later"
         ? schema
             .required("Please select a reminder time")
             .oneOf(
