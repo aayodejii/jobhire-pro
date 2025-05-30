@@ -10,7 +10,7 @@ const Pricing = () => {
     {
       id: 1,
       name: "Basic",
-      price: "$49",
+      price: "£49",
       description: "Ideal for those testing the waters",
       features: [
         "15 applications per month",
@@ -23,7 +23,7 @@ const Pricing = () => {
     {
       id: 2,
       name: "Professional",
-      price: "$99",
+      price: "£100",
       description: "Our most popular choice",
       features: [
         "40 applications per month",
@@ -38,7 +38,7 @@ const Pricing = () => {
     {
       id: 3,
       name: "Executive",
-      price: "$199",
+      price: "£199",
       description: "For serious career advancement",
       features: [
         "Unlimited applications",
