@@ -4,8 +4,11 @@ import {
   FaUsers,
   FaHeartbeat,
 } from "react-icons/fa";
+import { useForm } from "../contexts/FormContext";
 
 const WhyChooseUs = () => {
+  const { openForm } = useForm();
+
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -76,7 +79,10 @@ const WhyChooseUs = () => {
                 Our human experts meticulously tailor each application to
                 maximize your chances of success.
               </p>
-              <button className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              <button
+                onClick={openForm}
+                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              >
                 Schedule Your Career Strategy Session
               </button>
             </div>

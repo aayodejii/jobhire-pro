@@ -1,8 +1,11 @@
 // src/components/Pricing.tsx
+import { useForm } from "../contexts/FormContext";
 import { PricingPlan } from "../types";
 import { FaCheck, FaArrowRight } from "react-icons/fa";
 
 const Pricing = () => {
+  const { openForm } = useForm();
+
   const plans: PricingPlan[] = [
     {
       id: 1,
@@ -133,15 +136,12 @@ const Pricing = () => {
                 based on your career goals and job search needs.
               </p>
             </div>
-            <div className="mt-4 md:mt-0">
-              <a
-                href="#"
-                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
-              >
+            <button onClick={openForm} className="mt-4 md:mt-0">
+              <span className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
                 Find My Perfect Plan
                 <FaArrowRight className="ml-2" />
-              </a>
-            </div>
+              </span>
+            </button>
           </div>
         </div>
       </div>

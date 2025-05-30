@@ -1,7 +1,10 @@
 // src/components/Navbar.tsx
 import { FaBriefcase } from "react-icons/fa";
+import { useForm } from "../contexts/FormContext";
 
 const Navbar = () => {
+  const { openForm } = useForm();
+
   return (
     <nav className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,14 +41,11 @@ const Navbar = () => {
               Pricing
             </a>
           </div>
-          <div className="flex items-center">
-            <a
-              href="#pricing"
-              className="ml-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
-            >
+          <button onClick={openForm} className="flex items-center">
+            <span className="ml-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
               Get Started
-            </a>
-          </div>
+            </span>
+          </button>
         </div>
       </div>
     </nav>

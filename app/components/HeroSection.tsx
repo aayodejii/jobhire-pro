@@ -5,9 +5,11 @@
 import { useState } from "react";
 import { FaPlay, FaPlayCircle } from "react-icons/fa";
 import ContactFormPopup from "./ContactFormPopup";
+import { useForm } from "../contexts/FormContext";
 
 const HeroSection = () => {
-  const [isFormOpen, setIsFormOpen] = useState(false);
+  // const [isFormOpen, setIsFormOpen] = useState(false);
+  const { openForm } = useForm();
 
   return (
     <section className="hero-gradient text-white">
@@ -25,7 +27,8 @@ const HeroSection = () => {
             focus on preparing for interviews.
           </p>
           <div
-            onClick={() => setIsFormOpen(true)}
+            // onClick={() => setIsFormOpen(true)}
+            onClick={openForm}
             className="flex flex-col sm:flex-row justify-center gap-4"
           >
             <span className="px-8 py-4 border border-transparent text-base font-medium rounded-md shadow-sm text-primary bg-white hover:bg-gray-100 md:py-4 md:text-lg md:px-10 animate-pulse-slow">
@@ -54,7 +57,7 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-      {isFormOpen && <ContactFormPopup onClose={() => setIsFormOpen(false)} />}
+      {/* {isFormOpen && <ContactFormPopup onClose={() => setIsFormOpen(false)} />} */}
     </section>
   );
 };

@@ -11,8 +11,12 @@ import {
   MdOutlineRateReview,
 } from "react-icons/md";
 import { HiOutlineDocumentReport } from "react-icons/hi";
+import { RiReplay10Fill } from "react-icons/ri";
+import { useForm } from "../contexts/FormContext";
 
 const Services = () => {
+  const { openForm } = useForm();
+
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
       <div className="max-w-7xl mx-auto">
@@ -28,6 +32,16 @@ const Services = () => {
               Core Service: Professional Application Management
             </h3>
             <ul className="space-y-5">
+              <li className="flex items-start">
+                <div className="flex-shrink-0 mt-1 text-[18px] text-primary">
+                  <RiReplay10Fill />
+                </div>
+                <p className="ml-4 text-lg text-gray-700">
+                  <span className="font-medium">
+                    10 targeted applications daily
+                  </span>{" "}
+                </p>
+              </li>
               <li className="flex items-start">
                 <div className="flex-shrink-0 mt-1 text-primary">
                   <FaFileAlt />
@@ -147,7 +161,10 @@ const Services = () => {
         </div>
 
         <div className="mt-16 text-center">
-          <button className="inline-flex items-center px-4 py-3 border border-transparent text-lg font-medium rounded-md shadow-sm text-white bg-primary hover:bg-indigo-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <button
+            onClick={openForm}
+            className="inline-flex items-center px-4 py-3 border border-transparent text-lg font-medium rounded-md shadow-sm text-white bg-primary hover:bg-indigo-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
             Begin Your Professional Partnership
           </button>
         </div>

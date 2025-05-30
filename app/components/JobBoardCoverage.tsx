@@ -6,8 +6,11 @@ import {
 } from "react-icons/fa";
 import { SiIndeed, SiGlassdoor } from "react-icons/si";
 import { MdWork } from "react-icons/md";
+import { useForm } from "../contexts/FormContext";
 
 const JobBoardCoverage = () => {
+  const { openForm } = useForm();
+
   return (
     <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -160,7 +163,10 @@ const JobBoardCoverage = () => {
         </div>
 
         <div className="mt-16 text-center">
-          <button className="inline-flex items-center px-4 py-3 border border-transparent text-lg font-medium rounded-md shadow-sm text-white bg-primary hover:bg-indigo-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <button
+            onClick={openForm}
+            className="inline-flex items-center px-4 py-3 border border-transparent text-lg font-medium rounded-md shadow-sm text-white bg-primary hover:bg-indigo-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          >
             Begin Your Professional Job Search
           </button>
         </div>

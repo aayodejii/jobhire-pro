@@ -13,6 +13,8 @@ import { useState } from "react";
 import WhyChooseUs from "./components/WhyUs";
 import Services from "./components/Services";
 import JobBoardCoverage from "./components/JobBoardCoverage";
+import { FormProvider } from "./contexts/FormContext";
+import FormPopup from "./components/FormPopup";
 
 export default function Home() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
@@ -22,20 +24,23 @@ export default function Home() {
   };
 
   return (
-    <div className="font-sans text-dark bg-light">
-      <Navbar />
-      <HeroSection />
-      <WhyChooseUs />
-      {/* <TrustBadges /> */}
-      <Services />
-      <HowItWorks />
-      <Benefits />
-      <JobBoardCoverage />
-      <Testimonials />
-      <Pricing />
-      <FAQ activeFaq={activeFaq} toggleFaq={toggleFaq} />
-      <CTA />
-      <Footer />
-    </div>
+    <FormProvider>
+      <div className="font-sans text-dark bg-light">
+        <Navbar />
+        <HeroSection />
+        <WhyChooseUs />
+        {/* <TrustBadges /> */}
+        <Services />
+        <HowItWorks />
+        <Benefits />
+        <JobBoardCoverage />
+        <Testimonials />
+        <Pricing />
+        <FAQ activeFaq={activeFaq} toggleFaq={toggleFaq} />
+        <CTA />
+        <Footer />
+        <FormPopup />
+      </div>
+    </FormProvider>
   );
 }

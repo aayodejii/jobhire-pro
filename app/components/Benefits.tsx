@@ -10,8 +10,11 @@ import {
   FaHandHoldingUsd,
   FaArrowRight,
 } from "react-icons/fa";
+import { useForm } from "../contexts/FormContext";
 
 const Benefits = () => {
+  const { openForm } = useForm();
+
   const benefits: Benefit[] = [
     {
       id: 1,
@@ -46,14 +49,14 @@ const Benefits = () => {
       icon: "FaLock",
       title: "Complete Control",
       description:
-        "Review and approve every application before submission. You're always in the driver's seat.",
+        "Stay in control without the back-and-forth. We handle submissions for you, but you can check progress anytime.",
     },
     {
       id: 6,
       icon: "FaHandHoldingUsd",
-      title: "Risk-Free Guarantee",
+      title: "Confidence in Quality",
       description:
-        "Not satisfied? We offer a full refund within 14 days if you don't get at least 3 interview invitations.",
+        "We stand by our service and aim for your success. While we don’t offer refunds, we’ll work closely with you to ensure you meet your interview goals.",
     },
   ];
 
@@ -107,15 +110,12 @@ const Benefits = () => {
                 search with the attention and expertise it deserves.
               </p>
             </div>
-            <div className="mt-4 md:mt-0">
-              <a
-                href="#pricing"
-                className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-primary bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
-              >
+            <button onClick={openForm} className="mt-4 md:mt-0">
+              <span className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-primary bg-white hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white">
                 Get Started Today
                 <FaArrowRight className="ml-2" />
-              </a>
-            </div>
+              </span>
+            </button>
           </div>
         </div>
       </div>

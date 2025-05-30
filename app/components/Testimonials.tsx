@@ -1,8 +1,11 @@
 // src/components/Testimonials.tsx
+import { useForm } from "../contexts/FormContext";
 import { Testimonial } from "../types";
 import { FaStar, FaArrowRight } from "react-icons/fa";
 
 const Testimonials = () => {
+  const { openForm } = useForm();
+
   const testimonials: Testimonial[] = [
     {
       id: 1,
@@ -75,15 +78,12 @@ const Testimonials = () => {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
-          <a
-            href="#pricing"
-            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
-          >
+        <button onClick={openForm} className="mt-12 text-center">
+          <span className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
             Join Our Success Stories
             <FaArrowRight className="ml-2" />
-          </a>
-        </div>
+          </span>
+        </button>
       </div>
     </section>
   );

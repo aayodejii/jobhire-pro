@@ -1,7 +1,10 @@
 // src/components/CTA.tsx
 import { FaPhoneAlt } from "react-icons/fa";
+import { useForm } from "../contexts/FormContext";
 
 const CTA = () => {
+  const { openForm } = useForm();
+
   return (
     <section className="py-16 hero-gradient text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -16,20 +19,11 @@ const CTA = () => {
           how we can help you secure better opportunities aligned with your
           career goals.
         </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <a
-            href="#pricing"
-            className="px-8 py-4 border border-transparent text-base font-medium rounded-md shadow-sm text-primary bg-white hover:bg-gray-100 md:py-4 md:text-lg md:px-10"
-          >
-            Start My Job Search Now
-          </a>
-          <a
-            href="#"
-            className="px-8 py-4 border border-white text-base font-medium rounded-md shadow-sm text-white bg-transparent hover:bg-white hover:bg-opacity-10 md:py-4 md:text-lg md:px-10"
-          >
+        <button onClick={openForm} className="flex justify-center w-full gap-4">
+          <span className="px-8 py-4 border border-transparent text-base font-medium rounded-md shadow-sm text-primary bg-white hover:bg-gray-100 md:py-4 md:text-lg md:px-10">
             <FaPhoneAlt className="mr-2 inline" /> Book a Free Consultation
-          </a>
-        </div>
+          </span>
+        </button>
       </div>
     </section>
   );

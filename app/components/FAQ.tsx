@@ -98,7 +98,7 @@ const FAQ = ({ activeFaq, toggleFaq }: FAQProps) => {
             Still have questions? We're happy to help!
           </p>
           <a
-            href="#"
+            href="mailto:contact@nextrole.co.uk"
             className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
           >
             <FaEnvelope className="mr-2" /> Contact Our Team
