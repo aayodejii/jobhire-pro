@@ -19,7 +19,7 @@ import { Formik, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Alert from "@/app/components/Alert";
 
-const AffiliateDashboard = () => {
+const AffiliateDashboard2 = () => {
   const {
     data: profile,
     error: profileError,
@@ -311,4 +311,4 @@ const AffiliateDashboard = () => {
   );
 };
 
-export default AffiliateDashboard;
+export default AffiliateDashboard2;
