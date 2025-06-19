@@ -18,10 +18,10 @@ interface Config {
 
 const prod: Config = {
     url: {
-        API_URL: "https://",
+        API_URL: "https://api.nextrole.co.uk",
     },
     client_url: {
-        CLIENT_URL: "https://",
+        CLIENT_URL: "https://nextrole.co.uk",
     },
 
     env: {
