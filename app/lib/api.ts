@@ -22,7 +22,9 @@ const api: AxiosInstance = axios.create({
 api.interceptors.request.use(
     (config: InternalAxiosRequestConfig) => {
         const token = getAccessToken();
-        config.headers["X-API-Key"] = `d0479a07-05d2-4b72-afd6-e5bbc39030fd`;
+        // TODO: remove this line in production
+        config.headers["X-API-Key"] = `c0b49230-e869-4852-9c11-e8d1766d6d12`;
+        // config.headers["X-API-Key"] = `d0479a07-05d2-4b72-afd6-e5bbc39030fd`;
 
         if (token) {
             console.log("token", token)
