@@ -63,12 +63,12 @@ const HowItWorks = () => {
             ))}
           </div>
 
-          <div onClick={openForm} className="mt-12 text-center">
+          <button onClick={openForm} className="mt-12 text-center">
             <span className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary hover:bg-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
               Get Started in Minutes
               <FaArrowRight className="ml-2" />
             </span>
-          </div>
+          </button>
         </div>
       </div>
     </section>
