@@ -7,15 +7,18 @@ import {
   Commission,
   ReferralLink,
   affiliateApi,
+  useAffiliateStats,
+  useCommissions,
+  useReferralLinks,
 } from "@/app/utils/affiliateApi";
 import React, { useState, useEffect } from "react";
 import { AiOutlineUser } from "react-icons/ai";
 import { FiCopy, FiEye, FiDollarSign, FiTrendingUp } from "react-icons/fi";
 
 const AffiliateDashboard: React.FC = () => {
-  const [stats, setStats] = useState<AffiliateStats | null>(null);
-  const [links, setLinks] = useState<ReferralLink[]>([]);
-  const [commissions, setCommissions] = useState<Commission[]>([]);
+  // const [stats, setStats] = useState<AffiliateStats | null>(null);
+  // const [links, setLinks] = useState<ReferralLink[]>([]);
+  // const [commissions, setCommissions] = useState<Commission[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<
     "overview" | "links" | "commissions"
@@ -26,29 +29,53 @@ const AffiliateDashboard: React.FC = () => {
     text: string;
   } | null>(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [statsData, linksData, commissionsData] = await Promise.all([
-          affiliateApi.getStats(),
-          affiliateApi.getReferralLinks(),
-          affiliateApi.getCommissions(),
-        ]);
+  const {
+    stats,
+    isLoading: statsLoading,
+    error: statsError,
+  } = useAffiliateStats();
+  const {
+    links,
+    isLoading: linksLoading,
+    error: linksError,
+  } = useReferralLinks();
+  const {
+    commissions,
+    isLoading: commissionsLoading,
+    error: commissionsError,
+  } = useCommissions();
 
-        setStats(statsData);
-        setLinks(linksData);
-        setCommissions(commissionsData);
-      } catch (error) {
-        console.error("Error fetching dashboard data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const isLoading = statsLoading || linksLoading || commissionsLoading;
+  const error = statsError || linksError || commissionsError;
 
-    fetchData();
-  }, []);
+  if (error) {
+    console.error("Error fetching dashboard data:", error);
+    // You can render an error state here
+  }
 
-  if (loading) {
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const [statsData, linksData, commissionsData] = await Promise.all([
+  //         affiliateApi.getStats(),
+  //         affiliateApi.getReferralLinks(),
+  //         affiliateApi.getCommissions(),
+  //       ]);
+
+  //       setStats(statsData);
+  //       setLinks(linksData);
+  //       setCommissions(commissionsData);
+  //     } catch (error) {
+  //       console.error("Error fetching dashboard data:", error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+  if (isLoading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
@@ -192,7 +219,7 @@ const AffiliateDashboard: React.FC = () => {
                 </tr>
               </thead>
               <ReferralLinks
-                links={links}
+                links={links ?? []}
                 onCopyLink={() =>
                   setMessage({ type: "success", text: "Copied to clipboard!" })
                 }
@@ -228,7 +255,7 @@ const AffiliateDashboard: React.FC = () => {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {commissions.map((commission) => (
+                {commissions?.map((commission) => (
                   <tr key={commission.id}>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       {new Date(commission.calculated_at).toLocaleDateString()}
