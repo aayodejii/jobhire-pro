@@ -41,7 +41,7 @@ const LoginForm: React.FC<{}> = () => {
             );
             if (access && refresh) {
               authLogin(user, access, refresh);
-              router.push("/dashboard2");
+              router.push("/vx/dashboard");
             }
             setMessage({ type: "success", text: "Successfully logged in!" });
           } catch (error: any) {
