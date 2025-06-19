@@ -11,6 +11,7 @@ import * as Yup from "yup";
 import { signup } from "@/app/lib/auth";
 import { createReferralLink } from "@/app/lib/affiliate";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const AffiliateRegistrationForm: React.FC<{}> = ({}) => {
   const [message, setMessage] = useState<{
@@ -148,12 +149,13 @@ const AffiliateRegistrationForm: React.FC<{}> = ({}) => {
             <span className="text-gray-600 text-sm">
               Already have an account?{" "}
             </span>
-            <button
+            <Link
+              href="/login"
               // onClick={onSwitchToLogin}
               className="text-blue-600 hover:text-blue-800 text-sm font-medium"
             >
               Sign in
-            </button>
+            </Link>
           </div>
         </>
       )}

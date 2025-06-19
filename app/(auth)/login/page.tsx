@@ -9,6 +9,7 @@ import { FiMail } from "react-icons/fi";
 import * as Yup from "yup";
 import { login } from "@/app/lib/auth";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const LoginForm: React.FC<{}> = () => {
   const [message, setMessage] = useState<{
@@ -94,20 +95,20 @@ const LoginForm: React.FC<{}> = () => {
       </Formik>
 
       <div className="mt-6 text-center space-y-2">
-        <button
-          // onClick={onSwitchToReset}
+        <Link
+          href="reset-password"
           className="text-blue-600 hover:text-blue-800 text-sm"
         >
           Forgot your password?
-        </button>
+        </Link>
         <div>
           <span className="text-gray-600 text-sm">Don't have an account? </span>
-          <button
-            // onClick={onSwitchToRegister}
+          <Link
+            href="signup"
             className="text-blue-600 hover:text-blue-800 text-sm font-medium"
           >
             Sign up
-          </button>
+          </Link>
         </div>
       </div>
     </div>
