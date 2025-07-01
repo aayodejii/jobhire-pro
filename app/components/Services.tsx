@@ -38,7 +38,7 @@ const Services = () => {
                 </div>
                 <p className="ml-4 text-lg text-gray-700">
                   <span className="font-medium">
-                    10 targeted applications daily
+                    Up to 50 high-qulaity, tailored applications per week
                   </span>{" "}
                 </p>
               </li>

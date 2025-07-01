@@ -13,7 +13,7 @@ const Pricing = () => {
       price: "£100",
       description: "Our comprehensive job application service",
       features: [
-        "10 applications per day",
+        "Up to 10 applications per day",
         "5 days a week (Monday to Friday)",
         "Dedicated account manager",
         "Application tracking",

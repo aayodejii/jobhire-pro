@@ -36,7 +36,7 @@ export default function Home() {
           <HowItWorks />
           <Benefits />
           <JobBoardCoverage />
-          <Testimonials />
+          {/* <Testimonials /> */}
           <Pricing />
           <FAQ activeFaq={activeFaq} toggleFaq={toggleFaq} />
           <CTA />
