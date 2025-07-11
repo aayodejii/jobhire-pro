@@ -7,6 +7,8 @@ import { FiX, FiCalendar, FiClock } from "react-icons/fi";
 import api from "../lib/api";
 import { useAffiliateTracking } from "../hooks/useAffiliateTracking";
 import { ConversionTracker } from "./dashboard/ConversionTracker";
+import OnboardingPhase2 from "./OnboardingPhase2";
+import { config } from "@/config";
 
 interface FormValues {
   full_name: string;
@@ -14,6 +16,7 @@ interface FormValues {
   email: string;
   location: string;
   ref_id: string;
+  session_id: string | "";
   commitment: "now" | "remind-later";
   reminder_time?: "1week" | "2weeks" | "1month" | "3months";
 }
@@ -22,15 +25,17 @@ const ContactFormPopup = ({ onClose }: { onClose: () => void }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionSuccess, setSubmissionSuccess] = useState(false);
   const [calendarRedirecting, setCalendarRedirecting] = useState(false);
-  const { getReferralCode } = useAffiliateTracking();
-  const [isConverted, setIsConverted] = useState(false);
+  const { trackEvent, getReferralCode } = useAffiliateTracking();
+  // const [isConverted, setIsConverted] = useState(false);
+  const baseURL = config.url.API_URL;
+  const [submissionId, setSubmissionId] = useState<string | null>(null);
 
   const validationSchema = Yup.object().shape({
     full_name: Yup.string().required("Full name is required"),
     phone: Yup.string().required("Phone number is required"),
     email: Yup.string().email("Invalid email").required("Email is required"),
     location: Yup.string().required("Location is required"),
-    ref_id: Yup.string().required("Location is required"),
+    ref_id: Yup.string().required("Ref ID is required"),
     commitment: Yup.string()
       .oneOf(["now", "remind-later"])
       .required("Please select an option"),
@@ -56,29 +61,44 @@ const ContactFormPopup = ({ onClose }: { onClose: () => void }) => {
       location: "",
       commitment: "now",
       ref_id: affiliateCode ?? "",
+      session_id: sessionStorage.getItem("tracking_session") || "",
       reminder_time: undefined,
     },
     validationSchema,
     onSubmit: async (values) => {
       setIsSubmitting(true);
       try {
-        await axios.post(
-          "https://api.cast.i.ng/admin-dashboard/next-role/leads/",
+        const response = await axios.post(
+          `${baseURL}/nextrole/phase1/`,
+          // "https://api.cast.i.ng/admin-dashboard/next-role/leads/",
           values
         );
+
+        // Package the user data
+        const userData = {
+          email: values.email,
+          name: values.full_name,
+          referralId: affiliateCode,
+          timestamp: new Date().getTime(),
+        };
 
         setSubmissionSuccess(true);
 
         // If user selects "Yes" to appointment
 
         if (values.commitment === "now") {
-          console.log("committing now....");
-          setIsConverted(true); // This will trigger the ConversionTracker
+          // Encode it to make it URL-safe
+          const encodedData = btoa(JSON.stringify(userData)); // Simple base64 encoding
+          console.log("committing now...., ", response.data);
+          setSubmissionId(response.data.id);
+          trackEvent({ event_type: "signup" });
+
+          // setIsConverted(true); // This will trigger the ConversionTracker
 
           // Redirect to Google Calendar for scheduling
           setCalendarRedirecting(true);
-          window.location.href =
-            "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3JW0tQ6BFZs5qm99FUUZwaWkj33Etty6FfrSmmY1WOA0ey_U8f3jeb_wBc8ViYEDI0pDuqcqBv";
+          // window.location.href = `https://calendar.app.google/N38LvRZRE8kGckzo8?user=${encodedData}`;
+          // "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3JW0tQ6BFZs5qm99FUUZwaWkj33Etty6FfrSmmY1WOA0ey_U8f3jeb_wBc8ViYEDI0pDuqcqBv";
         }
       } catch (error) {
         console.error("Submission error:", error);
@@ -88,15 +108,18 @@ const ContactFormPopup = ({ onClose }: { onClose: () => void }) => {
     },
   });
 
+  const inputClases =
+    "mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500";
+
   return (
     <>
-      <ConversionTracker
+      {/* <ConversionTracker
         isConverted={isConverted}
         conversionType="signup"
         metadata={{ formData: {} }}
-      />
+      /> */}
 
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+      <div className="fixed inset-0 bg-black/75 flex items-center justify-center p-4 z-50">
         <div className="bg-white rounded-lg shadow-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
           <div className="p-6">
             <div className="flex justify-between items-center mb-4">
@@ -110,19 +133,20 @@ const ContactFormPopup = ({ onClose }: { onClose: () => void }) => {
             </div>
 
             {submissionSuccess ? (
-              <div className="text-center py-8">
+              <div className="py-8">
                 {formik.values.commitment === "now" && calendarRedirecting ? (
-                  <div className="flex flex-col items-center">
-                    <FiCalendar className="text-blue-500 text-5xl mb-4 animate-pulse" />
-                    <h3 className="text-xl font-semibold mb-2">
-                      Redirecting to Calendar
-                    </h3>
-                    <p className="text-gray-600">
-                      Please wait while we redirect you to schedule your
-                      appointment...
-                    </p>
-                  </div>
+                  <OnboardingPhase2 submissionId={submissionId || undefined} />
                 ) : (
+                  // <div className="flex flex-col items-center">
+                  //   <FiCalendar className="text-blue-500 text-5xl mb-4 animate-pulse" />
+                  //   <h3 className="text-xl font-semibold mb-2">
+                  //     Redirecting to Calendar
+                  //   </h3>
+                  //   <p className="text-gray-600">
+                  //     Please wait while we redirect you to schedule your
+                  //     appointment...
+                  //   </p>
+                  // </div>
                   <div className="flex flex-col items-center">
                     <FiClock className="text-green-500 text-5xl mb-4" />
                     <h3 className="text-xl font-semibold mb-2">Thank You!</h3>
@@ -157,7 +181,7 @@ const ContactFormPopup = ({ onClose }: { onClose: () => void }) => {
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.full_name}
-                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                      className={inputClases}
                     />
                     {formik.touched.full_name && formik.errors.full_name ? (
                       <p className="mt-1 text-sm text-red-600">
@@ -180,7 +204,7 @@ const ContactFormPopup = ({ onClose }: { onClose: () => void }) => {
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.email}
-                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                      className={inputClases}
                     />
                     {formik.touched.email && formik.errors.email ? (
                       <p className="mt-1 text-sm text-red-600">
@@ -203,7 +227,7 @@ const ContactFormPopup = ({ onClose }: { onClose: () => void }) => {
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.phone}
-                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                      className={inputClases}
                     />
                     {formik.touched.phone && formik.errors.phone ? (
                       <p className="mt-1 text-sm text-red-600">
@@ -226,7 +250,7 @@ const ContactFormPopup = ({ onClose }: { onClose: () => void }) => {
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.location}
-                      className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                      className={inputClases}
                     />
                     {formik.touched.location && formik.errors.location ? (
                       <p className="mt-1 text-sm text-red-600">

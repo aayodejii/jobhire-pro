@@ -9,7 +9,7 @@ import { AffiliateProvider } from "./contexts/AffiliateContext";
 import { AffiliateTracker } from "./components/dashboard/AffiliateTracker";
 // import { AuthProvider } from "./contexts/AuthContext";
 
-const poppins = Poppins({
+const poppinso = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
   style: ["normal"],
@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} antialiased`}>
+      <body className={`${poppinso.className} antialiased`}>
         {/* <AffiliateTracker autoTrackPageViews={true}> */}
         <AuthProvider>
           <AffiliateProvider>
