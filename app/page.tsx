@@ -341,11 +341,9 @@ const NextRoleWaitlist = () => {
                     className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-white"
                   >
                     <option value="">Select budget range</option>
-                    <option value="20-50">£20 - £50 per week</option>
-                    <option value="50-100">£50 - £100 per week</option>
-                    <option value="100-150">£100 - £150 per week</option>
-                    <option value="150-200">£150 - £200 per week</option>
-                    <option value="200+">£200+ per week</option>
+                    <option value="100-150">£100 - £150 per month</option>
+                    <option value="150-200">£150 - £200 per month</option>
+                    <option value="150-200">£200 - £250 per month</option>
                   </select>
                   {formik.touched.willingToPay &&
                     formik.errors.willingToPay && (
