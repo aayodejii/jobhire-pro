@@ -131,7 +131,7 @@ const NextRoleWaitlist = () => {
             </div>
 
             {/* What We Do */}
-            <div className="bg-gray-800 rounded-xl p-8 shadow-lg border border-gray-700">
+            <div className="bg-gray-800 rounded-xl p-3 lg:p-8 shadow-lg border border-gray-700">
               <h3 className="text-2xl font-bold text-white mb-6 flex items-center">
                 <MdStar className="w-6 h-6 text-yellow-500 mr-2" />
                 What We Do for You
@@ -194,7 +194,7 @@ const NextRoleWaitlist = () => {
             </div>
 
             {/* The NextRole Advantage */}
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl p-8 text-white shadow-lg">
+            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl p-3 lg:p-8 text-white shadow-lg">
               <h3 className="text-2xl font-bold mb-4 flex items-center">
                 <MdTrendingUp className="w-6 h-6 mr-2" />
                 The NextRole Advantage
@@ -349,7 +349,7 @@ const NextRoleWaitlist = () => {
                   </select>
                   {formik.touched.willingToPay &&
                     formik.errors.willingToPay && (
-                      <p className="mt-1 text-sm text-red-600">
+                      <p className="mt-1 text-sm text-red-400">
                         {formik.errors.willingToPay}
                       </p>
                     )}
@@ -380,7 +380,7 @@ const NextRoleWaitlist = () => {
                   </select>
                   {formik.touched.affiliateInterest &&
                     formik.errors.affiliateInterest && (
-                      <p className="mt-1 text-sm text-red-600">
+                      <p className="mt-1 text-sm text-red-400">
                         {formik.errors.affiliateInterest}
                       </p>
                     )}
