@@ -111,8 +111,9 @@ const NextRoleWaitlist = () => {
           {/* Left Column - Description */}
           <div className="space-y-8">
             <div className="text-center lg:text-left">
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-                Stop Wasting Hours on Job Applications
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+                You Could’ve Landed That Job… If You Had the Time to Apply.
+                {/* Stop Wasting Hours on Job Applications */}
               </h2>
               <p className="text-xl text-gray-300 mb-8">
                 Get hired faster with professional job application management by
