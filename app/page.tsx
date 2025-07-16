@@ -119,7 +119,7 @@ const NextRoleWaitlist = () => {
                 Get hired faster with professional job application management by
                 real human experts.
               </p>
-              <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+              {/* <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
                 <p className="text-gray-300 leading-relaxed">
                   While you're spending 20+ hours a week crafting applications
                   and getting lost in job board black holes, you could be
@@ -128,7 +128,7 @@ const NextRoleWaitlist = () => {
                   tailoring applications to tracking responses—so you can focus
                   on what matters most.
                 </p>
-              </div>
+              </div> */}
             </div>
 
             {/* What We Do */}
@@ -200,13 +200,13 @@ const NextRoleWaitlist = () => {
                 <MdTrendingUp className="w-6 h-6 mr-2" />
                 The NextRole Advantage
               </h3>
-              <p className="text-blue-100 leading-relaxed mb-6">
+              {/* <p className="text-blue-100 leading-relaxed mb-6">
                 Skip the endless hours of generic applications that disappear
                 into black holes. Our human experts will handle your entire job
                 search with personalized attention, strategic targeting, and
                 comprehensive coverage across all major job platforms—so you can
                 focus on preparing for the interviews we help you secure.
-              </p>
+              </p> */}
               <div className="bg-white/10 rounded-lg p-4">
                 <p className="text-white font-medium">
                   Ready to transform your job search? Join our waitlist and be
