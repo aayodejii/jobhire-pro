@@ -115,10 +115,10 @@ const NextRoleWaitlist = () => {
                 You Could’ve Landed That Job… If You Had the Time to Apply.
                 {/* Stop Wasting Hours on Job Applications */}
               </h2>
-              <p className="text-xl text-gray-300 mb-8">
+              {/* <p className="text-xl text-gray-300 mb-8">
                 Get hired faster with professional job application management by
                 real human experts.
-              </p>
+              </p> */}
               {/* <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
                 <p className="text-gray-300 leading-relaxed">
                   While you're spending 20+ hours a week crafting applications
@@ -406,7 +406,7 @@ const NextRoleWaitlist = () => {
             </div>
 
             {/* Service Summary */}
-            <div className="mt-6 bg-gray-50 rounded-lg p-6">
+            {/* <div className="mt-6 bg-gray-50 rounded-lg p-6">
               <h4 className="font-semibold text-gray-900 mb-3">
                 Service Summary
               </h4>
@@ -416,7 +416,7 @@ const NextRoleWaitlist = () => {
                   <span>25 applications per week (5 per day)</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  {/* <MdGpsFixed className="w-4 h-4 text-blue-600" /> */}
+                  <MdGpsFixed className="w-4 h-4 text-blue-600" />
                   <span>100 applications per month</span>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -424,7 +424,7 @@ const NextRoleWaitlist = () => {
                   <span>Weekly progress reviews</span>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </main>
