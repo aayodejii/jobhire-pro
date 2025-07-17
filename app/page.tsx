@@ -15,19 +15,25 @@ import {
   MdTrendingUp,
   MdStar,
 } from "react-icons/md";
+import axios from "axios";
+import { config } from "@/config";
+import { useRouter } from "next/navigation";
+import CountrySelector from "./components/CountrySelector";
 
 const NextRoleWaitlist = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const baseURL = config.url.API_URL;
+  const router = useRouter();
 
   const validationSchema = Yup.object({
     email: Yup.string()
       .email("Please enter a valid email address")
       .required("Email is required"),
     phone: Yup.string().required("Phone number is required"),
-    currentLocation: Yup.string().required("Current location is required"),
-    desiredLocation: Yup.string().required("Desired job location is required"),
-    willingToPay: Yup.string().required("Please select your budget range"),
-    affiliateInterest: Yup.string().required(
+    current_location: Yup.string().required("Current location is required"),
+    desired_location: Yup.string().required("Desired job location is required"),
+    willing_to_pay: Yup.string().required("Please select your budget range"),
+    affiliate_interest: Yup.string().required(
       "Please let us know about affiliate interest"
     ),
   });
@@ -36,52 +42,54 @@ const NextRoleWaitlist = () => {
     initialValues: {
       email: "",
       phone: "",
-      currentLocation: "",
-      desiredLocation: "",
-      willingToPay: "",
-      affiliateInterest: "",
+      current_location: "",
+      desired_location: "",
+      willing_to_pay: "",
+      affiliate_interest: "",
     },
     validationSchema,
     onSubmit: async (values) => {
       try {
-        // Simulate API call
-        await fetch("/api/waitlist", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(values),
-        });
-        setIsSubmitted(true);
+        const response = await axios.post(
+          `${baseURL}/nextrole/waitlist/`,
+          values
+        );
+        if (response.status === 201) {
+          router.push("/joined-waitlist");
+        }
       } catch (error) {
-        console.error("Error submitting form:", error);
+        console.error("Submission error:", error);
+      } finally {
+        // setIsSubmitted(false);
       }
     },
   });
 
-  if (isSubmitted) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
-          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <MdCheckCircle className="w-8 h-8 text-green-600" />
-          </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            You're on the list!
-          </h2>
-          <p className="text-gray-600 mb-6">
-            Thank you for joining our waitlist. We'll notify you as soon as
-            NextRole launches and you'll be among the first to experience
-            professional job application management.
-          </p>
-          <div className="bg-blue-50 rounded-lg p-4">
-            <p className="text-sm text-blue-800 font-medium">
-              Keep an eye on your inbox for exclusive early access and special
-              launch offers!
-            </p>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  // if (isSubmitted) {
+  //   return (
+  //     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
+  //       <div className="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
+  //         <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+  //           <MdCheckCircle className="w-8 h-8 text-green-600" />
+  //         </div>
+  //         <h2 className="text-2xl font-bold text-gray-900 mb-4">
+  //           You're on the list!
+  //         </h2>
+  //         <p className="text-gray-600 mb-6">
+  //           Thank you for joining our waitlist. We'll notify you as soon as
+  //           NextRole launches and you'll be among the first to experience
+  //           professional job application management.
+  //         </p>
+  //         <div className="bg-blue-50 rounded-lg p-4">
+  //           <p className="text-sm text-blue-800 font-medium">
+  //             Keep an eye on your inbox for exclusive early access and special
+  //             launch offers!
+  //           </p>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="min-h-screen bg-gray-900">
@@ -279,49 +287,59 @@ const NextRoleWaitlist = () => {
                 {/* Current Location */}
                 <div>
                   <label
-                    htmlFor="currentLocation"
+                    htmlFor="current_location"
                     className="block text-sm font-medium text-gray-300 mb-2"
                   >
                     <MdLocationOn className="w-4 h-4 inline mr-1" />
                     Current Location
                   </label>
-                  <input
-                    type="text"
-                    id="currentLocation"
-                    {...formik.getFieldProps("currentLocation")}
-                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-white placeholder-gray-400"
-                    placeholder="London, UK"
+                  <CountrySelector
+                    value={formik.values.current_location}
+                    onChange={(value: string) =>
+                      formik.setFieldValue("current_location", value)
+                    }
+                    placeholder="Select your current country"
+                    hasError={
+                      !!(
+                        formik.touched.current_location &&
+                        formik.errors.current_location
+                      )
+                    }
                   />
-                  {/* {formik.touched.currentLocation && formik.errors.currentLocation && (
-                    <p className="mt-1 text-sm text-red-400">{formik.errors.currentLocation}</p>
-                  )}-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-white placeholder-gray-400"
-                    placeholder="London, UK"
-                  />
-                  {formik.touched.currentLocation && formik.errors.currentLocation && (
-                    <p className="mt-1 text-sm text-red-600">{formik.errors.currentLocation}</p>
-                  )} */}
+                  {formik.touched.current_location &&
+                    formik.errors.current_location && (
+                      <p className="mt-1 text-sm text-red-400">
+                        {formik.errors.current_location}
+                      </p>
+                    )}
                 </div>
 
-                {/* When Looking */}
+                {/* Desired Location */}
                 <div>
                   <label
-                    htmlFor="desiredLocation"
+                    htmlFor="desired_location"
                     className="block text-sm font-medium text-gray-300 mb-2"
                   >
                     <MdPlace className="w-4 h-4 inline mr-1" />
                     Desired Job Location
                   </label>
-                  <input
-                    type="text"
-                    id="desiredLocation"
-                    {...formik.getFieldProps("desiredLocation")}
-                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-white placeholder-gray-400"
-                    placeholder="London, UK or Remote"
+                  <CountrySelector
+                    value={formik.values.desired_location}
+                    onChange={(value: string) =>
+                      formik.setFieldValue("desired_location", value)
+                    }
+                    placeholder="Select desired job country"
+                    hasError={
+                      !!(
+                        formik.touched.desired_location &&
+                        formik.errors.desired_location
+                      )
+                    }
                   />
-                  {formik.touched.desiredLocation &&
-                    formik.errors.desiredLocation && (
+                  {formik.touched.desired_location &&
+                    formik.errors.desired_location && (
                       <p className="mt-1 text-sm text-red-400">
-                        {formik.errors.desiredLocation}
+                        {formik.errors.desired_location}
                       </p>
                     )}
                 </div>
@@ -329,7 +347,7 @@ const NextRoleWaitlist = () => {
                 {/* Willing to Pay */}
                 <div>
                   <label
-                    htmlFor="willingToPay"
+                    htmlFor="willing_to_pay"
                     className="block text-sm font-medium text-gray-300 mb-2"
                   >
                     <MdAttachMoney className="w-4 h-4 inline mr-1" />
@@ -337,8 +355,8 @@ const NextRoleWaitlist = () => {
                     management?
                   </label>
                   <select
-                    id="willingToPay"
-                    {...formik.getFieldProps("willingToPay")}
+                    id="willing_to_pay"
+                    {...formik.getFieldProps("willing_to_pay")}
                     className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-white"
                   >
                     <option value="">Select budget range</option>
@@ -346,10 +364,10 @@ const NextRoleWaitlist = () => {
                     <option value="150-200">£150 - £200 per month</option>
                     <option value="150-200">£200 - £250 per month</option>
                   </select>
-                  {formik.touched.willingToPay &&
-                    formik.errors.willingToPay && (
+                  {formik.touched.willing_to_pay &&
+                    formik.errors.willing_to_pay && (
                       <p className="mt-1 text-sm text-red-400">
-                        {formik.errors.willingToPay}
+                        {formik.errors.willing_to_pay}
                       </p>
                     )}
                 </div>
@@ -357,7 +375,7 @@ const NextRoleWaitlist = () => {
                 {/* Affiliate Interest */}
                 <div>
                   <label
-                    htmlFor="affiliateInterest"
+                    htmlFor="affiliate_interest"
                     className="block text-sm font-medium text-gray-300 mb-2"
                   >
                     <MdGroup className="w-4 h-4 inline mr-1" />
@@ -365,8 +383,8 @@ const NextRoleWaitlist = () => {
                     to earn commissions by referring others?
                   </label>
                   <select
-                    id="affiliateInterest"
-                    {...formik.getFieldProps("affiliateInterest")}
+                    id="affiliate_interest"
+                    {...formik.getFieldProps("affiliate_interest")}
                     className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors text-white"
                   >
                     <option value="">Select your interest</option>
@@ -377,10 +395,10 @@ const NextRoleWaitlist = () => {
                     <option value="not-interested">Not interested</option>
                     <option value="tell-me-more">Tell me more</option>
                   </select>
-                  {formik.touched.affiliateInterest &&
-                    formik.errors.affiliateInterest && (
+                  {formik.touched.affiliate_interest &&
+                    formik.errors.affiliate_interest && (
                       <p className="mt-1 text-sm text-red-400">
-                        {formik.errors.affiliateInterest}
+                        {formik.errors.affiliate_interest}
                       </p>
                     )}
                 </div>
