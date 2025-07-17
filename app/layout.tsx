@@ -8,6 +8,7 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { AffiliateProvider } from "./contexts/AffiliateContext";
 import { AffiliateTracker } from "./components/dashboard/AffiliateTracker";
 // import { AuthProvider } from "./contexts/AuthContext";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 const poppinso = Poppins({
   subsets: ["latin"],
@@ -36,6 +37,7 @@ export default function RootLayout({
         </AuthProvider>
         {/* </AffiliateTracker> */}
       </body>
+      <GoogleTagManager gtmId="GTM-W6JQ8D8X" />
     </html>
   );
 }

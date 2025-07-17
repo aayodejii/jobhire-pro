@@ -19,6 +19,7 @@ import axios from "axios";
 import { config } from "@/config";
 import { useRouter } from "next/navigation";
 import CountrySelector from "./components/CountrySelector";
+import Link from "next/link";
 
 const NextRoleWaitlist = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -100,11 +101,14 @@ const NextRoleWaitlist = () => {
             <div className="flex items-center space-x-3">
               {/* <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center"> */}
               {/* <MdTarget className="w-6 h-6 text-white" /> */}
-              <img
-                src="/img/NextRole-full-logo.png"
-                alt=""
-                className="w-[140px]"
-              />
+              <Link href={""}>
+                <img
+                  src="/img/NextRole-full-logo.png"
+                  alt=""
+                  className="w-[140px]"
+                />
+              </Link>
+
               {/* </div> */}
 
               {/* <h1 className="text-2xl font-bold text-white">NextRole</h1> */}
