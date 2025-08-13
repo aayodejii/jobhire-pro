@@ -1,21 +1,21 @@
 "use client";
-import Benefits from "./components/Benefits";
-import CTA from "./components/CTA";
-import FAQ from "./components/FAQ";
-import Footer from "./components/Footer";
-import HeroSection from "./components/HeroSection";
-import HowItWorks from "./components/HowItWorks";
-import Navbar from "./components/Navbar";
-import Pricing from "./components/Pricing";
-import TrustBadges from "./components/TrustBadges";
-import Testimonials from "./components/Testimonials";
+import Benefits from "@/app/components/Benefits";
+import CTA from "@/app/components/CTA";
+import FAQ from "@/app/components/FAQ";
+import Footer from "@/app/components/Footer";
+import HeroSection from "@/app/components/HeroSection";
+import HowItWorks from "@/app/components/HowItWorks";
+import Navbar from "@/app/components/Navbar";
+import Pricing from "@/app/components/Pricing";
+import TrustBadges from "@/app/components/TrustBadges";
+import Testimonials from "@/app/components/Testimonials";
 import { useState } from "react";
-import WhyChooseUs from "./components/WhyUs";
-import Services from "./components/Services";
-import JobBoardCoverage from "./components/JobBoardCoverage";
-import { FormProvider } from "./contexts/FormContext";
-import FormPopup from "./components/FormPopup";
-import { AffiliateTracker } from "./components/dashboard/AffiliateTracker";
+import WhyChooseUs from "@/app/components/WhyUs";
+import Services from "@/app/components/Services";
+import JobBoardCoverage from "@/app/components/JobBoardCoverage";
+import { FormProvider } from "@/app/contexts/FormContext";
+import FormPopup from "@/app/components/FormPopup";
+import { AffiliateTracker } from "@/app/components/dashboard/AffiliateTracker";
 
 export default function Home() {
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
